@@ -13,12 +13,8 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages    # ✅ Required for GitHub Pages deployment
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -26,7 +22,7 @@ jobs:
       - name: Upload static site
         uses: actions/upload-pages-artifact@v2
         with:
-          path: '.'  # Change this if your output is in a subfolder like 'dist'
+          path: '.'
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v3
