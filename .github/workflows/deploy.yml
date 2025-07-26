@@ -14,15 +14,20 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # Checkout your code
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
+      # Set up GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
+      # Upload your static files to the GitHub Pages artifact
       - name: Upload static site
         uses: actions/upload-pages-artifact@v2
         with:
-          path: '.'
+          path: '.'  # Change this to your actual static site directory (e.g., 'dist' or 'build')
 
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
