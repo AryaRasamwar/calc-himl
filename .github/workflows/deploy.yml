@@ -13,21 +13,20 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages    # ✅ Required for GitHub Pages deployment
+
     steps:
-      # Checkout your code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Set up GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # Upload your static files to the GitHub Pages artifact
       - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
-          path: '.'  # Change this to your actual static site directory (e.g., 'dist' or 'build')
+          path: '.'  # Change this if your output is in a subfolder like 'dist'
 
-      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
